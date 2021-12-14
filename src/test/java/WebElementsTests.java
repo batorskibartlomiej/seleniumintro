@@ -128,7 +128,7 @@ public class WebElementsTests {
 
         assertEquals(namesOfOptions, expectedNamesOfOptions);
 
-        /
+
 
 
     }
