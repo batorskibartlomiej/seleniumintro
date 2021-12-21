@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -133,15 +134,63 @@ public class WebElementsTests {
 
     }
 
+    @Test
+    public void selectingOptionsfromDropDownTest(){
+        WebElement countryWebElement= driver.findElement(By.id("country"));
+        Select countryDropDown = new Select(countryWebElement);
+
+        sleep();
+
+        countryDropDown.selectByIndex(1);
+
+        sleep();
+
+        Assert.assertEquals(countryDropDown.getFirstSelectedOption().getText(), "Poland");
+
+        countryDropDown.selectByValue("de_DE");
+        sleep();
+        assertEquals(countryDropDown.getFirstSelectedOption().getText(), "Germany");
+
+        countryDropDown.selectByVisibleText("UK");
+
+        sleep();
+
+        assertEquals(countryDropDown.getFirstSelectedOption().getText(), "UK");
+    }
 
 
-        @Test
+    @Test
     public void filePickingTest(){
         sleep();
         WebElement uploadFilePicker = driver.findElement(By.id("upload_file"));
         uploadFilePicker.sendKeys("D:\\test.jpg");
         sleep();
     }
+
+    @Test
+    public void checkIfElementsOnPageTest(){
+        WebElement usernameField = driver.findElement(By.id("username"));
+        WebElement passwordField = driver.findElement(By.id("password"));
+        WebElement emailLabel = driver.findElement(By.cssSelector("span[class='help-block']"));
+
+        System.out.println("Is usernameField displayed: " + usernameField.isDisplayed());
+        System.out.println("Is usernameField enabled: " + usernameField.isEnabled());
+
+        System.out.println("Is passwordField displayed: " + passwordField.isDisplayed());
+        System.out.println("Is passwordField enabled: " + passwordField.isEnabled());
+
+        System.out.println("Is emailLabel displayed: " + emailLabel.isDisplayed());
+        System.out.println("Is emailLabel enabled: " + emailLabel.isEnabled());
+
+        assertTrue(usernameField.isDisplayed());
+        assertTrue(passwordField.isDisplayed());
+        assertTrue(emailLabel.isDisplayed());
+
+        assertTrue(usernameField.isEnabled());
+        assertFalse(passwordField.isEnabled());
+    }
+
+
 
     private void sleep() {
         try{
