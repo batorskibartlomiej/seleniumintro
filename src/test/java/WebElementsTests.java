@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
@@ -189,6 +190,28 @@ public class WebElementsTests {
         assertTrue(usernameField.isEnabled());
         assertFalse(passwordField.isEnabled());
     }
+
+    @Test
+    public void hoverOverAndClickAndHoldTest() {
+        driver.navigate().to("http://przyklady.javastart.pl/test/hover_mouse.html");
+
+        WebElement smileyIcon = driver.findElement(By.id("smiley"));
+
+        Actions action = new Actions(driver);
+
+        action.moveToElement(smileyIcon).click().build().perform();
+
+        sleep();
+
+        Actions secondAction = new Actions(driver);
+        WebElement smileyIcon2 = driver.findElement(By.id("smiley2"));
+
+        secondAction.clickAndHold(smileyIcon2).build().perform();
+
+        sleep();
+
+    }
+
 
 
 
