@@ -64,7 +64,7 @@ public class LoginPage {
     public String getWarningMessage(){
         WaitForElement.waitUntilElementsVisible(messageLabel);
 
-        String warningText = messageLabel.getText();
+         String warningText = messageLabel.getText();
         logger.info("Returned warning message was: {}", warningText);
         return warningText;
     }
