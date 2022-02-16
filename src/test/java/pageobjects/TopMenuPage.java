@@ -24,11 +24,12 @@ public class TopMenuPage {
         PageFactory.initElements(DriverManager.getWebDriver(),this);
     }
 
-    public void clickOnSignInLink(){
+    public LoginPage clickOnSignInLink(){
         WaitForElement.waitUntilElementIsClickable(signOnLink);
 
         signOnLink.click();
         logger.info("Clicked on Sign on Link");
+        return new LoginPage();
     }
 
 
