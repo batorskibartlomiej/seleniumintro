@@ -56,9 +56,10 @@ public class LoginPage {
         return new FooterPage();
     }
 
-    public void clickFish(){
+    public FishListPage clickFish(){
         btnFishImage.click();
         logger.info("Clicked on fish image");
+        return new FishListPage();
     }
 
     public String getWarningMessage(){
