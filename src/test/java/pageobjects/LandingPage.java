@@ -12,7 +12,7 @@ import waits.WaitForElement;
 public class LandingPage {
 
 
-    private Logger logger = LogManager.getRootLogger();
+    private Logger logger = LogManager.getLogger(LandingPage.class);
 
     @FindBy(css = "#Content a" )
     WebElement enterStoreLink;
