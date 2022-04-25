@@ -9,10 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import driver.manager.DriverManager;
 import waits.WaitForElement;
 
-public class LandingPage {
+public class LandingPage extends BasePage{
 
 
-    private Logger logger = LogManager.getLogger(LandingPage.class);
 
     @FindBy(css = "#Content a" )
     WebElement enterStoreLink;
@@ -20,16 +19,12 @@ public class LandingPage {
 
 
 
-    public LandingPage(){
-
-        PageFactory.initElements(DriverManager.getWebDriver(),this);
-    }
 
     @Step("Click on Enter Store link")
     public TopMenuPage clickOnEnterStoreLink(){
         WaitForElement.waitUntilElementIsClickable(enterStoreLink);
         enterStoreLink.click();
-        logger.info("Clicked on Enter Store link");
+        log().info("Clicked on Enter Store link");
         return new TopMenuPage();
 
     }

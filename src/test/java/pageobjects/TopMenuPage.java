@@ -9,9 +9,8 @@ import org.openqa.selenium.support.PageFactory;
 import driver.manager.DriverManager;
 import waits.WaitForElement;
 
-public class TopMenuPage {
+public class TopMenuPage extends BasePage {
 
-    private Logger logger= LogManager.getLogger(TopMenuPage.class);
 
     @FindBy(css = "#MenuContent a[href*='signonForm']")
     WebElement signOnLink;
@@ -19,18 +18,14 @@ public class TopMenuPage {
 
 
 
-    public TopMenuPage(){
 
-
-        PageFactory.initElements(DriverManager.getWebDriver(),this);
-    }
 
     @Step("Click on Sign In Link")
     public LoginPage clickOnSignInLink(){
         WaitForElement.waitUntilElementIsClickable(signOnLink);
 
         signOnLink.click();
-        logger.info("Clicked on Sign on Link");
+        log().info("Clicked on Sign on Link");
         return new LoginPage();
     }
 

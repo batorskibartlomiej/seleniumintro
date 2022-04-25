@@ -11,9 +11,9 @@ import waits.WaitForElement;
 
 import static generic.assertions.AssertWebElement.assertThat;
 
-public class FooterPage {
+public class FooterPage extends BasePage{
 
-    private Logger logger= LogManager.getLogger(FooterPage.class);
+
 
 
     @FindBy(id = "Banner")
@@ -21,14 +21,11 @@ public class FooterPage {
 
 
 
-    public FooterPage(){
 
-        PageFactory.initElements(DriverManager.getWebDriver(),this);
-    }
 
     @Step("Assert that element dog banner is displayed")
     public FooterPage assertThatDogBannerIsDisplayed(){
-        logger.info("Checking if dog banner is displayed");
+        log().info("Checking if dog banner is displayed");
         WaitForElement.waitUntilElementsVisible(bannerAfterLoginLogo);
         assertThat(bannerAfterLoginLogo).isDisplayed();
         return this;

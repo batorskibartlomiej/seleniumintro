@@ -3,17 +3,9 @@ package tests;
 import driver.manager.DriverUtils;
 
 import io.qameta.allure.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pageobjects.FooterPage;
-import pageobjects.LandingPage;
 import pageobjects.LoginPage;
-import pageobjects.TopMenuPage;
-
-import java.time.Duration;
+import utils.testng.listeners.RetryAnalyzer;
 
 import static navigation.ApplicationURLs.LOGIN_URL;
 import static org.testng.Assert.assertTrue;
@@ -24,7 +16,7 @@ public class FailedLoginTests extends TestBase {
     @Issue("DEFECT-1")
     @TmsLink("ID-1")
     @Severity(SeverityLevel.NORMAL)
-    @Test
+    @Test(retryAnalyzer = RetryAnalyzer.class)
     @Description("The goal of this test is to log in using not proper username and password" +
             " and check if warning message Invalid username or password is displayed")
     public void asUserTryToLogInWithIncorrectLoginAndPassword(){
